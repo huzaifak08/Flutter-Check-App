@@ -78,9 +78,26 @@ class DatabaseService {
     return productCollection.where('userId', isEqualTo: userId).snapshots();
   }
 
+  // Update Data:
+  Future<void> updateProdctData(
+      String productId, String productName, String productDescription) {
+    return productCollection.doc(productId).update({
+      'productName': productName,
+      'productDescription': productDescription,
+    });
+  }
+
   // Delete Data:
 
-  Future<void> deleteProductData(String productId) {
-    return productCollection.doc(productId).delete();
+  Future<void> deleteProductData(
+      String userId, String productId, String productName) async {
+    // delete from product collection:
+    await productCollection.doc(productId).delete();
+
+    // also delete from users collection:
+    DocumentReference userDocumentReference = usersCollection.doc(userId);
+    return await userDocumentReference.update({
+      "products": FieldValue.arrayRemove(["${productId}_$productName"])
+    });
   }
 }

@@ -5,6 +5,7 @@ import 'package:test_app/Auth%20Screens/login_page.dart';
 import 'package:test_app/Services/auth_service.dart';
 import 'package:test_app/Services/database_service.dart';
 import 'package:test_app/create_page.dart';
+import 'package:test_app/update_page.dart';
 import 'package:test_app/widgets.dart';
 
 class HomePage extends StatefulWidget {
@@ -57,20 +58,55 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (context, index) {
                 final productData =
                     productDocs[index].data()! as Map<String, dynamic>;
-                return ListTile(
-                  title: Text(productData['productName']),
-                  subtitle: Text(productData['productDescription']),
-                  trailing: IconButton(
-                    onPressed: () {
-                      DatabaseService()
-                          .deleteProductData(productData['productId'])
-                          .then((value) {
-                        toastMessage('Item deleted');
-                      }).onError((error, stackTrace) {
-                        toastMessage(error.toString());
-                      });
-                    },
-                    icon: Icon(Icons.delete),
+                return InkWell(
+                  onTap: () {
+                    nextScreen(
+                        context,
+                        UpdateScreen(
+                          productId: productData['productId'],
+                          oldProductName: productData['productName'],
+                          oldProductDescription:
+                              productData['productDescription'],
+                        ));
+                  },
+                  child: ListTile(
+                    title: Text(productData['productName']),
+                    subtitle: Text(productData['productDescription']),
+                    trailing: IconButton(
+                      onPressed: () {
+                        // DatabaseService()
+                        //     .deleteProductDataFromUser(
+                        //         FirebaseAuth.instance.currentUser!.uid,
+                        //         productData['productId'],
+                        //         productData['productName']
+                        // )
+                        //     .then((value) {
+                        //   toastMessage('Item deleted');
+                        // }).onError((error, stackTrace) {
+                        //   toastMessage(error.toString());
+                        // });
+
+                        DatabaseService()
+                            .deleteProductData(
+                                FirebaseAuth.instance.currentUser!.uid,
+                                productData['productId'],
+                                productData['productName'])
+                            .then((value) {
+                          toastMessage('Item deleted');
+                        }).onError((error, stackTrace) {
+                          toastMessage(error.toString());
+                        });
+
+                        // DatabaseService()
+                        //     .deleteProductData(productData['productId'])
+                        //     .then((value) {
+                        //   toastMessage('Item deleted');
+                        // }).onError((error, stackTrace) {
+                        //   toastMessage(error.toString());
+                        // });
+                      },
+                      icon: Icon(Icons.delete),
+                    ),
                   ),
                 );
               },
