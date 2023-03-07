@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:test_app/Auth%20Screens/login_page.dart';
+import 'package:test_app/Notification/notification_services.dart';
 import 'package:test_app/Services/auth_service.dart';
 import 'package:test_app/Services/database_service.dart';
 import 'package:test_app/create_page.dart';
@@ -17,6 +18,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   AuthService authService = AuthService();
+  NotificationServices notificationServices = NotificationServices();
+
+  @override
+  void initState() {
+    super.initState();
+    notificationServices.requestNotificationPermission();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,18 +82,6 @@ class _HomePageState extends State<HomePage> {
                     subtitle: Text(productData['productDescription']),
                     trailing: IconButton(
                       onPressed: () {
-                        // DatabaseService()
-                        //     .deleteProductDataFromUser(
-                        //         FirebaseAuth.instance.currentUser!.uid,
-                        //         productData['productId'],
-                        //         productData['productName']
-                        // )
-                        //     .then((value) {
-                        //   toastMessage('Item deleted');
-                        // }).onError((error, stackTrace) {
-                        //   toastMessage(error.toString());
-                        // });
-
                         DatabaseService()
                             .deleteProductData(
                                 FirebaseAuth.instance.currentUser!.uid,
@@ -96,14 +92,6 @@ class _HomePageState extends State<HomePage> {
                         }).onError((error, stackTrace) {
                           toastMessage(error.toString());
                         });
-
-                        // DatabaseService()
-                        //     .deleteProductData(productData['productId'])
-                        //     .then((value) {
-                        //   toastMessage('Item deleted');
-                        // }).onError((error, stackTrace) {
-                        //   toastMessage(error.toString());
-                        // });
                       },
                       icon: Icon(Icons.delete),
                     ),
@@ -111,47 +99,6 @@ class _HomePageState extends State<HomePage> {
                 );
               },
             );
-
-            // Map<String, dynamic> data =
-            //     snapshot.data!.data() as Map<String, dynamic>;
-            // return Text('Hello ${data['productName']}!');
-
-            // return ListView.builder(
-            //   itemCount: snapshot.data!.docs.length,
-            //   itemBuilder: (context, index) {
-            //     return Column(
-            //       children: [
-            //         ListTile(
-            //           title: Text(snapshot.data!.docs[index]['productName']),
-            //           subtitle:
-            //               Text(snapshot.data!.docs[index]['productPrice']),
-            //         )
-            //       ],
-            //     );
-            //   },
-            // );
-
-            // return ListView(
-            //   children: snapshot.data!.docs.map((DocumentSnapshot document) {
-            //     Map<String, dynamic> data =
-            //         document.data() as Map<String, dynamic>;
-            //     return ListTile(
-            //       title: Text(data['productName']),
-            //       // subtitle: Text(data['price']),
-            //     );
-            //   }).toList(),
-            // );
-
-            // return ListView.builder(
-            //   itemCount: snapshot.data!.docs.length,
-            //   itemBuilder: (context, index) {
-            //     DocumentSnapshot userData = snapshot.data!.docs[index];
-            //     return ListTile(
-            //       title: Text(userData['productName']),
-            //       subtitle: Text(userData['productPrice']),
-            //     );
-            //   },
-            // );
           } else {
             return Center(
               child: Text('No Data'),
