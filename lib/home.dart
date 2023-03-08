@@ -23,7 +23,19 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    notificationServices.requestNotificationPermission();
+    notificationServices.requestNotificationPermission(); // Permisson:
+
+    // Token:
+    notificationServices.getDeviceToken().then((value) {
+      debugPrint('Value: ');
+      debugPrint(value);
+    });
+
+    // Refresh:
+    notificationServices.isTokenRefresh();
+
+    //
+    notificationServices.firebaseInit(context);
   }
 
   @override
