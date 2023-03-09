@@ -5,6 +5,8 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:test_app/mesage_screen.dart';
+import 'package:test_app/widgets.dart';
 
 class NotificationServices {
   //initialising firebase message plugin
@@ -89,7 +91,7 @@ class NotificationServices {
     await _flutterLocalNotificationsPlugin.initialize(initializationSetting,
         onDidReceiveNotificationResponse: (payload) {
       // handle interaction when app is active for android
-      // handleMessage(context, message);
+      handleMessage(context, message);
     });
   }
 
@@ -125,6 +127,34 @@ class NotificationServices {
           message.notification!.title.toString(),
           message.notification!.body.toString(),
           notificationDetails);
+    });
+  }
+
+  // Handle Message:
+  void handleMessage(BuildContext context, RemoteMessage message) {
+    if (message.data['type'] == 'msg') {
+      nextScreen(
+          context,
+          MessageScreen(
+            id: message.data['id'],
+          ));
+    }
+  }
+
+  //
+  Future<void> setupInteractMessage(BuildContext context) async {
+    // When App is terminated then this msg will be shown:
+
+    RemoteMessage? initialMessage =
+        await FirebaseMessaging.instance.getInitialMessage();
+
+    if (initialMessage != null) {
+      handleMessage(context, initialMessage);
+    }
+
+    // When App is in background:
+    FirebaseMessaging.onMessageOpenedApp.listen((event) {
+      handleMessage(context, event);
     });
   }
 }

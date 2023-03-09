@@ -34,8 +34,9 @@ class _HomePageState extends State<HomePage> {
     // Refresh:
     notificationServices.isTokenRefresh();
 
-    //
     notificationServices.firebaseInit(context);
+
+    notificationServices.setupInteractMessage(context);
   }
 
   @override
