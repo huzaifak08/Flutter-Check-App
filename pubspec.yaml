@@ -38,6 +38,7 @@ dependencies:
     sdk: flutter
   flutter_local_notifications: ^13.0.0
   fluttertoast: ^8.2.1
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_lints: ^2.0.0

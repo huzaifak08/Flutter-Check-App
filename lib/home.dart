@@ -5,6 +5,7 @@ import 'package:test_app/Auth%20Screens/login_page.dart';
 import 'package:test_app/Notification/notification_services.dart';
 import 'package:test_app/Services/auth_service.dart';
 import 'package:test_app/Services/database_service.dart';
+import 'package:test_app/API%20Services/api_page.dart';
 import 'package:test_app/create_page.dart';
 import 'package:test_app/update_page.dart';
 import 'package:test_app/widgets.dart';
@@ -54,6 +55,25 @@ class _HomePageState extends State<HomePage> {
               },
               icon: const Icon(Icons.exit_to_app))
         ],
+      ),
+      drawer: Drawer(
+        child: SafeArea(
+          child: Column(
+            children: [
+              const ListTile(
+                title: Text('Firebase Page'),
+                leading: Icon(Icons.home),
+              ),
+              ListTile(
+                title: const Text('API Page'),
+                leading: const Icon(Icons.api),
+                onTap: () {
+                  nextScreenReplacement(context, const APIScreen());
+                },
+              )
+            ],
+          ),
+        ),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: DatabaseService()
