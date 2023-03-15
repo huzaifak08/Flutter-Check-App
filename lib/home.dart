@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:test_app/API%20Services/api_custom_model.dart';
 import 'package:test_app/Auth%20Screens/login_page.dart';
 import 'package:test_app/Notification/notification_services.dart';
 import 'package:test_app/Services/auth_service.dart';
@@ -70,7 +71,14 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   nextScreenReplacement(context, const APIScreen());
                 },
-              )
+              ),
+              ListTile(
+                title: const Text('API Custom Model'),
+                leading: const Icon(Icons.api_outlined),
+                onTap: () {
+                  nextScreenReplacement(context, const APICustomModel());
+                },
+              ),
             ],
           ),
         ),

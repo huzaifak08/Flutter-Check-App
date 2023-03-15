@@ -5,6 +5,7 @@ import 'package:test_app/home.dart';
 import 'package:test_app/widgets.dart';
 import 'package:http/http.dart' as http;
 
+import 'api_custom_model.dart';
 import 'models.dart';
 
 class APIScreen extends StatefulWidget {
@@ -58,7 +59,14 @@ class _APIScreenState extends State<APIScreen> {
               const ListTile(
                 title: Text('API Page'),
                 leading: Icon(Icons.api),
-              )
+              ),
+              ListTile(
+                title: const Text('API Custom Model'),
+                leading: const Icon(Icons.api_outlined),
+                onTap: () {
+                  nextScreenReplacement(context, const APICustomModel());
+                },
+              ),
             ],
           ),
         ),
