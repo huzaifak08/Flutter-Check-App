@@ -7,7 +7,7 @@ import 'package:test_app/Widgets/widgets.dart';
 import 'package:http/http.dart' as http;
 
 import 'api_custom_model.dart';
-import 'models.dart';
+import 'post_model.dart';
 
 class APIScreen extends StatefulWidget {
   const APIScreen({super.key});

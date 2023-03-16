@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+import 'package:test_app/API%20Services/api_complex_json.dart';
 import 'package:test_app/API%20Services/api_custom_model.dart';
 import 'package:test_app/Firestore/home.dart';
 import 'package:test_app/Widgets/widgets.dart';
@@ -15,7 +15,7 @@ class CustomDrawer extends StatelessWidget {
     return Drawer(
       width: 280,
       child: Padding(
-        padding: const EdgeInsets.only(top: 100.0),
+        padding: const EdgeInsets.only(top: 60.0),
         child: Column(
           children: [
             _createDrawerItem(
@@ -38,6 +38,13 @@ class CustomDrawer extends StatelessWidget {
                 text: 'API Custom Model',
                 onTap: () {
                   nextScreenReplacement(context, const APICustomModel());
+                }),
+            _createDrawerItem(
+                isSelected: index == 3 ? true : false,
+                icon: Icons.api_outlined,
+                text: 'API Complex JSON',
+                onTap: () {
+                  nextScreenReplacement(context, const APIComplexScreen());
                 }),
           ],
         ),
