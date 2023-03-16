@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:test_app/home.dart';
+import 'package:test_app/Firestore/home.dart';
 import 'package:test_app/Auth%20Screens/login_page.dart';
-import 'package:test_app/widgets.dart';
+import 'package:test_app/Widgets/widgets.dart';
 
 class SplashServices {
   void isLogin(BuildContext context) {

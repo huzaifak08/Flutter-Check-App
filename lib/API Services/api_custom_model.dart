@@ -3,9 +3,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:test_app/API%20Services/api_page.dart';
 import 'package:http/http.dart' as http;
+import 'package:test_app/Widgets/drawer_widget.dart';
 
-import '../home.dart';
-import '../widgets.dart';
+import '../Firestore/home.dart';
+import '../Widgets/widgets.dart';
 
 class APICustomModel extends StatefulWidget {
   const APICustomModel({super.key});
@@ -40,32 +41,7 @@ class _APICustomModelState extends State<APICustomModel> {
       appBar: AppBar(
         title: const Text('API Custom Photos Model Page'),
       ),
-      drawer: Drawer(
-        child: SafeArea(
-          child: Column(
-            children: [
-              ListTile(
-                title: const Text('Firebase Page'),
-                leading: const Icon(Icons.home),
-                onTap: () {
-                  nextScreenReplacement(context, const HomePage());
-                },
-              ),
-              ListTile(
-                title: const Text('API Page'),
-                leading: const Icon(Icons.api),
-                onTap: () {
-                  nextScreenReplacement(context, const APIScreen());
-                },
-              ),
-              const ListTile(
-                title: Text('API Custom Model'),
-                leading: Icon(Icons.api_outlined),
-              ),
-            ],
-          ),
-        ),
-      ),
+      drawer: const CustomDrawer(index: 2),
       body: Column(
         children: [
           Expanded(

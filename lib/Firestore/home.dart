@@ -7,9 +7,10 @@ import 'package:test_app/Notification/notification_services.dart';
 import 'package:test_app/Services/auth_service.dart';
 import 'package:test_app/Services/database_service.dart';
 import 'package:test_app/API%20Services/api_page.dart';
-import 'package:test_app/create_page.dart';
-import 'package:test_app/update_page.dart';
-import 'package:test_app/widgets.dart';
+import 'package:test_app/Firestore/create_page.dart';
+import 'package:test_app/Firestore/update_page.dart';
+import 'package:test_app/Widgets/drawer_widget.dart';
+import 'package:test_app/Widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -57,32 +58,7 @@ class _HomePageState extends State<HomePage> {
               icon: const Icon(Icons.exit_to_app))
         ],
       ),
-      drawer: Drawer(
-        child: SafeArea(
-          child: Column(
-            children: [
-              const ListTile(
-                title: Text('Firebase Page'),
-                leading: Icon(Icons.home),
-              ),
-              ListTile(
-                title: const Text('API Page'),
-                leading: const Icon(Icons.api),
-                onTap: () {
-                  nextScreenReplacement(context, const APIScreen());
-                },
-              ),
-              ListTile(
-                title: const Text('API Custom Model'),
-                leading: const Icon(Icons.api_outlined),
-                onTap: () {
-                  nextScreenReplacement(context, const APICustomModel());
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
+      drawer: CustomDrawer(index: 0),
       body: StreamBuilder<QuerySnapshot>(
         stream: DatabaseService()
             .getUserProductData(FirebaseAuth.instance.currentUser!.uid),

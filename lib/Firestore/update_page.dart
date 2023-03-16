@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_app/Services/database_service.dart';
-import 'package:test_app/widgets.dart';
+import 'package:test_app/Widgets/widgets.dart';
 
 class UpdateScreen extends StatefulWidget {
   String productId;

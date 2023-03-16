@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:test_app/Services/database_service.dart';
-import 'package:test_app/home.dart';
+import 'package:test_app/Firestore/home.dart';
 import 'package:test_app/Auth%20Screens/signup_page.dart';
-import 'package:test_app/widgets.dart';
+import 'package:test_app/Widgets/widgets.dart';
 
 import '../Services/auth_service.dart';
 

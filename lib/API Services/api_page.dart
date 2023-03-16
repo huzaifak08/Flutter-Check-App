@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:test_app/home.dart';
-import 'package:test_app/widgets.dart';
+import 'package:test_app/Firestore/home.dart';
+import 'package:test_app/Widgets/drawer_widget.dart';
+import 'package:test_app/Widgets/widgets.dart';
 import 'package:http/http.dart' as http;
 
 import 'api_custom_model.dart';
@@ -45,32 +46,7 @@ class _APIScreenState extends State<APIScreen> {
       appBar: AppBar(
         title: const Text('API Page'),
       ),
-      drawer: Drawer(
-        child: SafeArea(
-          child: Column(
-            children: [
-              ListTile(
-                title: const Text('Firebase Page'),
-                leading: const Icon(Icons.home),
-                onTap: () {
-                  nextScreenReplacement(context, const HomePage());
-                },
-              ),
-              const ListTile(
-                title: Text('API Page'),
-                leading: Icon(Icons.api),
-              ),
-              ListTile(
-                title: const Text('API Custom Model'),
-                leading: const Icon(Icons.api_outlined),
-                onTap: () {
-                  nextScreenReplacement(context, const APICustomModel());
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
+      drawer: const CustomDrawer(index: 1),
       body: FutureBuilder(
         future: getPostApi(),
         builder: (context, snapshot) {

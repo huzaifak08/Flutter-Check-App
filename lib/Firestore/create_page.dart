@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:test_app/Services/database_service.dart';
-import 'package:test_app/home.dart';
-import 'package:test_app/widgets.dart';
+import 'package:test_app/Firestore/home.dart';
+import 'package:test_app/Widgets/widgets.dart';
 
 class CreatePage extends StatefulWidget {
   const CreatePage({super.key});

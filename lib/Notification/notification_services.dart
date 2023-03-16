@@ -5,8 +5,8 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:test_app/mesage_screen.dart';
-import 'package:test_app/widgets.dart';
+import 'package:test_app/Notification/mesage_screen.dart';
+import 'package:test_app/Widgets/widgets.dart';
 
 class NotificationServices {
   //initialising firebase message plugin
