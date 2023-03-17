@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:test_app/API%20Services/user_model.dart';
 import 'package:test_app/Widgets/drawer_widget.dart';

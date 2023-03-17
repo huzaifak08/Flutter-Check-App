@@ -1,12 +1,7 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:test_app/API%20Services/api_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:test_app/Widgets/drawer_widget.dart';
-
-import '../Firestore/home.dart';
-import '../Widgets/widgets.dart';
 
 class APICustomModel extends StatefulWidget {
   const APICustomModel({super.key});
