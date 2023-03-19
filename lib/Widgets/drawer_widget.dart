@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:test_app/API%20Services/api_complex_json.dart';
 import 'package:test_app/API%20Services/api_complex_noModel_json.dart';
 import 'package:test_app/API%20Services/api_custom_model.dart';
+import 'package:test_app/API%20Services/api_last_json.dart';
 import 'package:test_app/Firestore/home.dart';
 import 'package:test_app/Widgets/widgets.dart';
 
@@ -54,6 +55,13 @@ class CustomDrawer extends StatelessWidget {
                 onTap: () {
                   nextScreenReplacement(
                       context, const APIComplexNoModelScreen());
+                }),
+            _createDrawerItem(
+                isSelected: index == 5 ? true : false,
+                icon: Icons.api_outlined,
+                text: 'API Last JSON',
+                onTap: () {
+                  nextScreenReplacement(context, const APILastJSONScreen());
                 }),
           ],
         ),
