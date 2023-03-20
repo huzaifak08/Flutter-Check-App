@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:test_app/API%20Services/API%20Example%20APP/signup_api.dart';
 import 'package:test_app/Add%20to%20Cart/cart_provider.dart';
 import 'package:test_app/Add%20to%20Cart/cart_screen.dart';
 import 'package:test_app/Splash/splash_page.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const SplashScreen(),
+        home: const SignUpAPI(),
       ),
     );
   }
