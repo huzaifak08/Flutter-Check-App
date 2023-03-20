@@ -1,7 +1,5 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
 class SignUpAPI extends StatefulWidget {
@@ -29,7 +27,7 @@ class _SignUpAPIState extends State<SignUpAPI> {
       if (response.statusCode == 200) {
         // to print data:
         var data = jsonDecode(response.body.toString());
-        debugPrint(data);
+        debugPrint(data['token']);
 
         debugPrint('Account Created Successfully');
       } else {
