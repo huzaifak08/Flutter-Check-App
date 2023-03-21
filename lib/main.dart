@@ -6,6 +6,7 @@ import 'package:test_app/API%20Services/API%20Example%20APP/signup_api.dart';
 import 'package:test_app/Add%20to%20Cart/cart_provider.dart';
 import 'package:test_app/Add%20to%20Cart/cart_screen.dart';
 import 'package:test_app/Splash/splash_page.dart';
+import 'package:test_app/pdf_upload.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const SignUpAPI(),
+        home: const PDFUpload(),
       ),
     );
   }
