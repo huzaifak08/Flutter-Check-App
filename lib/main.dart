@@ -4,8 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/API%20Services/API%20Example%20APP/signup_api.dart';
 import 'package:test_app/Add%20to%20Cart/cart_provider.dart';
-import 'package:test_app/Add%20to%20Cart/cart_screen.dart';
+import 'package:test_app/Firestore/home.dart';
+import 'package:test_app/Providers/count_provider.dart';
+import 'package:test_app/Providers/count_screen.dart';
 import 'package:test_app/Splash/splash_page.dart';
+import 'package:test_app/Routes%20Services/route_name.dart';
+import 'package:test_app/Routes%20Services/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,9 +35,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => Cart(),
-        ),
+        ChangeNotifierProvider(create: (_) => Cart()),
+        ChangeNotifierProvider(create: (_) => CountProvider())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -41,7 +44,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const SignUpAPI(),
+        // home: const HomePage(),
+        initialRoute: RouteName.firstScreen,
+        onGenerateRoute: Routes.generateRoute,
       ),
     );
   }
