@@ -22,11 +22,10 @@ class _SecondScreenState extends State<SecondScreen> {
             onPressed: () {
               Navigator.pushNamed(context, RouteName.thirdScreen);
             },
-            child: Text('Screen Three'),
+            child: const Text('Screen Three'),
           ),
         ],
       )),
     );
-    ;
   }
 }

@@ -9,7 +9,7 @@ class Routes {
     switch (settings.name) {
       case RouteName.firstScreen:
         return MaterialPageRoute(
-          builder: (context) => FirstScreen(),
+          builder: (context) => const FirstScreen(),
         );
       case RouteName.secondScreen:
         return MaterialPageRoute(
@@ -17,11 +17,11 @@ class Routes {
         );
       case RouteName.thirdScreen:
         return MaterialPageRoute(
-          builder: (context) => ThirdScreen(),
+          builder: (context) => const ThirdScreen(),
         );
       default:
         return MaterialPageRoute(
-          builder: (context) => Scaffold(
+          builder: (context) => const Scaffold(
             body: Center(child: Text('No Route Defined')),
           ),
         );

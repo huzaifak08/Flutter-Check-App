@@ -7,6 +7,7 @@ import 'package:test_app/Add%20to%20Cart/cart_provider.dart';
 import 'package:test_app/Firestore/home.dart';
 import 'package:test_app/Providers/count_provider.dart';
 import 'package:test_app/Providers/count_screen.dart';
+import 'package:test_app/Shared%20Preferences/shared_preferences_widget.dart';
 import 'package:test_app/Splash/splash_page.dart';
 import 'package:test_app/Routes%20Services/route_name.dart';
 import 'package:test_app/Routes%20Services/routes.dart';
@@ -44,9 +45,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        // home: const HomePage(),
-        initialRoute: RouteName.firstScreen,
-        onGenerateRoute: Routes.generateRoute,
+        home: const SharedPreferencesWidget(),
+        // initialRoute: RouteName.firstScreen,
+        // onGenerateRoute: Routes.generateRoute,
       ),
     );
   }
