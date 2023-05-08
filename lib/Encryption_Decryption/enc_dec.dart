@@ -14,7 +14,11 @@ class FlutterEncDec extends StatefulWidget {
 class _FlutterEncDecState extends State<FlutterEncDec> {
   final passwordController = TextEditingController();
 
+  final encryptionKey =
+      base64.encode(List.generate(16, (_) => Random.secure().nextInt(256)));
+
   String? encrptedText;
+  String? decryptedText;
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +32,6 @@ class _FlutterEncDecState extends State<FlutterEncDec> {
           const SizedBox(height: 12),
           ElevatedButton(
               onPressed: () {
-                final password = 'mypassword';
-                final encryptionKey = base64.encode(
-                    List.generate(16, (_) => Random.secure().nextInt(256)));
-
                 print('Encrypted Key: ' + encryptionKey);
 
                 encryptString(passwordController.text, encryptionKey);
@@ -39,8 +39,18 @@ class _FlutterEncDecState extends State<FlutterEncDec> {
                 setState(() {});
               },
               child: Text('Encrypt')),
-          ElevatedButton(onPressed: () {}, child: Text('Decrypt')),
-          Text(encrptedText ?? ''),
+          ElevatedButton(
+              onPressed: () {
+                final decryptedText =
+                    decryptString(encrptedText!, encryptionKey);
+                print('Decrypted text: $decryptedText');
+
+                setState(() {});
+              },
+              child: Text('Decrypt')),
+          SizedBox(height: 12),
+          Text('Encrypted Text: ${encrptedText ?? ''}'),
+          Text('Decrypted Text: ${decryptedText ?? ''}'),
         ],
       ),
     );
@@ -62,5 +72,19 @@ class _FlutterEncDecState extends State<FlutterEncDec> {
     encrptedText = encryptedBase64;
 
     print('Encrypted hex: $encryptedHex');
+  }
+
+  // Decryption:
+  String decryptString(String encryptedBase64, String keyString) {
+    final key = encrypt.Key.fromUtf8(keyString);
+    final iv = encrypt.IV.fromLength(16);
+    final encrypter = encrypt.Encrypter(encrypt.AES(key));
+
+    final encrypted = encrypt.Encrypted.fromBase64(encryptedBase64);
+    final decrypted = encrypter.decrypt(encrypted, iv: iv);
+
+    decryptedText = decrypted;
+
+    return decrypted;
   }
 }
