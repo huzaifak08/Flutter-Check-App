@@ -2,15 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:test_app/API%20Services/API%20Example%20APP/signup_api.dart';
 import 'package:test_app/Add%20to%20Cart/cart_provider.dart';
-import 'package:test_app/Firestore/home.dart';
+import 'package:test_app/Encryption_Decryption/enc_dec.dart';
 import 'package:test_app/Providers/count_provider.dart';
-import 'package:test_app/Providers/count_screen.dart';
-import 'package:test_app/Shared%20Preferences/shared_preferences_widget.dart';
-import 'package:test_app/Splash/splash_page.dart';
-import 'package:test_app/Routes%20Services/route_name.dart';
-import 'package:test_app/Routes%20Services/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,7 +39,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const SharedPreferencesWidget(),
+        home: const FlutterEncDec(),
         // initialRoute: RouteName.firstScreen,
         // onGenerateRoute: Routes.generateRoute,
       ),
