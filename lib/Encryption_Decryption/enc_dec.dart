@@ -38,7 +38,7 @@ class _FlutterEncDecState extends State<FlutterEncDec> {
 
                 setState(() {});
               },
-              child: Text('Encrypt')),
+              child: const Text('Encrypt')),
           ElevatedButton(
               onPressed: () {
                 final decryptedText =
