@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:test_app/components/service_locator.dart';
 import 'package:test_app/mobx/switch/switch_store.dart';
 
 class SwitchScreen extends StatefulWidget {
@@ -10,7 +11,7 @@ class SwitchScreen extends StatefulWidget {
 }
 
 class _SwitchScreenState extends State<SwitchScreen> {
-  final SwitchStore _switchStore = SwitchStore();
+  final SwitchStore _switchStore = getIt<SwitchStore>();
 
   @override
   Widget build(BuildContext context) {
