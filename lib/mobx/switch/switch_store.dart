@@ -5,6 +5,9 @@ part 'switch_store.g.dart';
 // ignore: library_private_types_in_public_api
 class SwitchStore = _SwitchStore with _$SwitchStore;
 
+// Add mobx, flutter_mobx and build_runner in dependencies and dev-dependencies
+// Run this Command: flutter pub run build_runner watch --delete-conflicting-outputs
+
 abstract class _SwitchStore with Store {
   final SwitchRepository _switchRepo = SwitchRepository();
 
