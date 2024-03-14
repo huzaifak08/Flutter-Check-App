@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/switch_screen.dart';
+import 'package:test_app/screens/switch_screen.dart';
 
 void main() {
   runApp(const MyApp());

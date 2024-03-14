@@ -32,6 +32,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_mobx: ^2.2.0+2
+  get_it: ^7.6.7
   mobx: ^2.3.0+1
 
 dev_dependencies:

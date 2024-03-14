@@ -24,7 +24,7 @@ class _SwitchScreenState extends State<SwitchScreen> {
             return Switch(
               value: _switchStore.isSwitch,
               onChanged: (value) {
-                _switchStore.toggleSwitch();
+                _switchStore.toggleSwitch(value);
               },
             );
           },
