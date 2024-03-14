@@ -15,6 +15,12 @@ mixin _$SwitchStore on _SwitchStore, Store {
   bool get isSwitch => (_$isSwitchComputed ??=
           Computed<bool>(() => super.isSwitch, name: '_SwitchStore.isSwitch'))
       .value;
+  Computed<double>? _$sliderComputed;
+
+  @override
+  double get slider => (_$sliderComputed ??=
+          Computed<double>(() => super.slider, name: '_SwitchStore.slider'))
+      .value;
 
   late final _$_isSwitchAtom =
       Atom(name: '_SwitchStore._isSwitch', context: context);
@@ -29,6 +35,22 @@ mixin _$SwitchStore on _SwitchStore, Store {
   set _isSwitch(bool value) {
     _$_isSwitchAtom.reportWrite(value, super._isSwitch, () {
       super._isSwitch = value;
+    });
+  }
+
+  late final _$_sliderAtom =
+      Atom(name: '_SwitchStore._slider', context: context);
+
+  @override
+  double get _slider {
+    _$_sliderAtom.reportRead();
+    return super._slider;
+  }
+
+  @override
+  set _slider(double value) {
+    _$_sliderAtom.reportWrite(value, super._slider, () {
+      super._slider = value;
     });
   }
 
@@ -47,9 +69,21 @@ mixin _$SwitchStore on _SwitchStore, Store {
   }
 
   @override
+  void moveSlider(double value) {
+    final _$actionInfo = _$_SwitchStoreActionController.startAction(
+        name: '_SwitchStore.moveSlider');
+    try {
+      return super.moveSlider(value);
+    } finally {
+      _$_SwitchStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-isSwitch: ${isSwitch}
+isSwitch: ${isSwitch},
+slider: ${slider}
     ''';
   }
 }

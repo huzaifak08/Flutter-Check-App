@@ -22,11 +22,22 @@ class _SwitchScreenState extends State<SwitchScreen> {
       body: Center(
         child: Observer(
           builder: (context) {
-            return Switch(
-              value: _switchStore.isSwitch,
-              onChanged: (value) {
-                _switchStore.toggleSwitch(value);
-              },
+            return Column(
+              children: [
+                Switch(
+                  value: _switchStore.isSwitch,
+                  onChanged: (value) {
+                    _switchStore.toggleSwitch(value);
+                  },
+                ),
+                const SizedBox(height: 23),
+                Slider(
+                  value: _switchStore.slider,
+                  onChanged: (value) {
+                    _switchStore.moveSlider(value);
+                  },
+                )
+              ],
             );
           },
         ),

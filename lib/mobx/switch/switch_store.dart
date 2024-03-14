@@ -17,10 +17,21 @@ abstract class _SwitchStore with Store {
   @computed
   bool get isSwitch => _isSwitch;
 
+  @observable
+  double _slider = 0.0;
+
+  @computed
+  double get slider => _slider;
+
   @action
   void toggleSwitch(bool value) {
     _switchRepo.toggleSwitch(value);
     _isSwitch = value;
+  }
+
+  @action
+  void moveSlider(double value) {
+    _slider = value;
   }
 
   // General -------------------------------------------------------------------
