@@ -5,7 +5,7 @@ part 'counter_store.g.dart';
 class CounterStore = _CounterStore with _$CounterStore;
 
 // Add mobx, flutter_mobx and build_runner in dependencies and dev-dependencies
-// Run this Command: flutter pub run build_runner build --delete-conflicting-outputs
+// Run this Command: flutter pub run build_runner watch --delete-conflicting-outputs
 
 abstract class _CounterStore with Store {
   @observable

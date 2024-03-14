@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:test_app/mobx/counter_store.dart';
+import 'package:test_app/mobx/counter/counter_store.dart';
 
 class CounterScreen extends StatefulWidget {
   const CounterScreen({super.key});
