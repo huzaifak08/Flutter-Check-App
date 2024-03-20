@@ -5,6 +5,19 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      body: RefreshIndicator(
+        onRefresh: () async {
+          return await Future.delayed(const Duration(seconds: 2));
+        },
+        child: ListView.builder(
+          itemCount: 20,
+          itemBuilder: (context, index) => const ListTile(
+            title: Text('Title'),
+            subtitle: Text('DEscription'),
+          ),
+        ),
+      ),
+    );
   }
 }
