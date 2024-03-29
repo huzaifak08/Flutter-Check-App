@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
       {required String recipientEmail, required String mailMessage}) async {
     String username = 'hk7928042@gmail.com';
 
-    String password = 'htvy kgpt gdkx kojf';
+    String password = 'password';
 
     final smtpServer = gmail(username, password);
 
